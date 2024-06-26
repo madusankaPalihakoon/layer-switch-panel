@@ -6,11 +6,12 @@ import { AddLayerDialogComponent } from '../add-layer-dialog/add-layer-dialog.co
 import { AddSublayerDialogComponent } from '../add-sublayer-dialog/add-sublayer-dialog.component';
 import { LayerTheme } from '../../layer.model';
 import { MatIconModule } from '@angular/material/icon';
+import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-layer-switch-panel',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MapComponent],
   templateUrl: './layer-switch-panel.component.html',
   styleUrl: './layer-switch-panel.component.css',
 })
@@ -50,5 +51,4 @@ export class LayerSwitchPanelComponent {
       theme.sublayers.splice(index, 1);
     }
   }
-  
 }

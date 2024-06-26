@@ -1,0 +1,21 @@
+<div #mapElement id="map" class="map">
+  <button (click)="setDrawingType('Point')">Draw Point</button>
+  <button (click)="setDrawingType('LineString')">Draw Line</button>
+  <button (click)="setDrawingType('Polygon')">Draw Polygon</button>
+  <button (click)="select()">Select</button>
+  <button (click)="delete()">Delete</button>
+  <button (click)="move()">Move</button>
+  <button (click)="togglesnap()">Snap</button>
+  <button (click)="testSelect()">test</button>
+  <button (click)="polyCut()">Split</button>
+  <label for="view-projection">Map Projection</label>
+  <select id="view-projection" (change)="onProjectionChange($event)">
+    <option value="EPSG:27700">Web Mercator (EPSG:27700)</option>
+    <option value="EPSG:23032">Web Mercator (EPSG:23032)</option>
+    <option value="EPSG:4326">WGS 84 (EPSG:4326)</option>
+    <option value="EPSG:5235">SLD99 (EPSG:5235)</option>
+    <!-- Add other projections as needed -->
+  </select>
+</div>
+<!-- Layer Switcher Component -->
+<!-- <app-layer-switcher (layerChange)="onLayerSelected($event)" [selectedLayer]="parentSelectedLayer"></app-layer-switcher> -->
