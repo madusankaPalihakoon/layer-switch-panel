@@ -1,0 +1,89 @@
+<h1 mat-dialog-title>Add Sublayer</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Layer Name</mat-label>
+    <input matInput [(ngModel)]="sublayerName" placeholder="Enter Layer Name" />
+  </mat-form-field>
+  <mat-radio-group [(ngModel)]="sublayerType">
+    <mat-radio-button value="point">Point</mat-radio-button>
+    <mat-radio-button value="line">Line</mat-radio-button>
+    <mat-radio-button value="polygon">Polygon</mat-radio-button>
+  </mat-radio-group>
+  <div *ngIf="sublayerType === 'point'">
+    <mat-form-field>
+      <mat-label>Color</mat-label>
+      <mat-select [(ngModel)]="color">
+        <mat-option value="red">Red</mat-option>
+        <mat-option value="blue">Blue</mat-option>
+        <mat-option value="green">Green</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Shape</mat-label>
+      <input matInput [(ngModel)]="shape" placeholder="Select Shape" />
+    </mat-form-field>
+  </div>
+  <div *ngIf="sublayerType === 'line'">
+    <mat-form-field>
+      <mat-label>Color</mat-label>
+      <mat-select [(ngModel)]="color">
+        <mat-option value="red">Red</mat-option>
+        <mat-option value="blue">Blue</mat-option>
+        <mat-option value="green">Green</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Style</mat-label>
+      <input matInput [(ngModel)]="style" placeholder="Select Style" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Width</mat-label>
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="width"
+        placeholder="Enter Width"
+      />
+    </mat-form-field>
+  </div>
+  <div *ngIf="sublayerType === 'polygon'">
+    <mat-form-field>
+      <mat-label>Color</mat-label>
+      <mat-select [(ngModel)]="color">
+        <mat-option value="red">Red</mat-option>
+        <mat-option value="blue">Blue</mat-option>
+        <mat-option value="green">Green</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Style</mat-label>
+      <input matInput [(ngModel)]="style" placeholder="Select Style" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Width</mat-label>
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="width"
+        placeholder="Enter Width"
+      />
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="{
+      name: sublayerName,
+      type: sublayerType,
+      color: color,
+      shape: shape,
+      style: style,
+      width: width
+    }"
+    cdkFocusInitial
+  >
+    OK
+  </button>
+</div>

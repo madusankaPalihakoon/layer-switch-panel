@@ -1,0 +1,84 @@
+/* src/app/layer-switch-panel/layer-switch-panel.component.css */
+
+/* Container styling for the layer switch panel */
+.layer-switch-panel {
+  position: relative;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 400px;
+}
+
+/* Styling for the Add Layer button */
+.add-layer-button {
+  position: absolute; /* Position relative to the panel container */
+  bottom: 200px; /* Distance from the bottom of the panel */
+  right: 20px; /* Distance from the right side of the panel */
+  background-color: #f6f6f6;
+  color: rgb(105, 177, 244);
+  margin-bottom: 10px;
+}
+
+.add-layer-button:hover {
+  background-color: #9ea2a6;
+}
+
+/* Styling for each layer theme container */
+.layer-theme {
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Styling for the layer theme name */
+.layer-theme-name {
+  margin: 0;
+  color: #3288e4;
+  line-height: 1.5; /* Adjust the line height */
+  font-size: 0.9em; /* Adjust the font size */
+}
+
+/* Styling for the Add Sublayer button */
+.add-sublayer-button {
+  background-color: #28a745;
+  color: white;
+  margin-top: 10px;
+}
+
+.add-sublayer-button:hover {
+  background-color: #218838;
+}
+
+/* Styling for the sublayer container */
+.sublayers {
+  margin-top: 10px;
+}
+
+/* Styling for each sublayer item */
+.sublayer {
+  padding: 5px 0;
+  margin: 0;
+  color: #555555;
+  line-height: 1.5; /* Adjust the line height */
+  font-size: 1em; /* Adjust the font size */
+}
+
+/* Box styling for the Add Layer section */
+.add-layer-box {
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center; /* Center the button horizontally */
+}
+
+.layer-content {
+  display: flex;
+  height: fit-content;
+  place-items: center;
+}

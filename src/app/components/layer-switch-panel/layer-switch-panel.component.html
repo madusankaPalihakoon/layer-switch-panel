@@ -1,0 +1,57 @@
+<div
+  class="flex w-4/5 mx-auto rounded-md bg-gray-300 h-fit flex-wrap items-start"
+>
+  <div class="w-full h-fit">
+    <button
+      class="bg-blue-600 text-white px-4 py-2 rounded-md ml-2 mt-2"
+      (click)="openLayerDialog()"
+    >
+      Add Layer
+    </button>
+  </div>
+  <div class="w-full p-2 mt-0 h-fit">
+    <div
+      *ngFor="let theme of layerThemes"
+      class="w-full bg-gray-200 p-2 rounded-sm"
+    >
+      <div class="inline-flex h-fit items-center w-full my-1">
+        <h3 class="text-lg font-semibold text-gray-800 mr-2">
+          {{ theme.name }}
+        </h3>
+        <button
+          class="h-full"
+          mat-icon-button
+          aria-label="Delete"
+          (click)="deleteTheme(layerThemes.indexOf(theme))"
+        >
+          <mat-icon fontIcon="delete"></mat-icon>
+        </button>
+      </div>
+      <button
+        class="bg-blue-600 text-white px-4 py-2 rounded-md ml-2 mt-2"
+        (click)="addSublayer(theme)"
+      >
+        Add Sublayers
+      </button>
+      <div class="space-y-2">
+        <div
+          *ngFor="let sublayer of theme.sublayers"
+          class="text-sm text-gray-600 h-fit"
+        >
+          <p class="inline-flex h-fit items-center my-1">
+            <input class="mr-2" type="radio" name="visibility" id="" />
+            {{ sublayer.name }} ({{ sublayer.type }})
+            <button
+              mat-icon-button
+              aria-label="Delete"
+              (click)="deleteSublayer(theme, sublayer)"
+            >
+              <mat-icon fontIcon="delete"></mat-icon>
+            </button>
+            <input class="ml-1" type="checkbox" name="selector" id="" />
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

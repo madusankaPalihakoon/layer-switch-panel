@@ -1,0 +1,12 @@
+<!-- src/app/add-layer-dialog/add-layer-dialog.component.html -->
+<h1 mat-dialog-title>Add Layer Theme</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Layer Name</mat-label>
+    <input matInput [(ngModel)]="layerName" placeholder="Enter Layer Name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="layerName" cdkFocusInitial>OK</button>
+</div>
