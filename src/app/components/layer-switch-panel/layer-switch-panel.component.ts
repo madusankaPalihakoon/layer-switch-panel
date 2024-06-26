@@ -13,25 +13,29 @@ import { MapComponent } from '../map/map.component';
   standalone: true,
   imports: [CommonModule, MatButtonModule, MatIconModule, MapComponent],
   templateUrl: './layer-switch-panel.component.html',
-  styleUrl: './layer-switch-panel.component.css',
+  styleUrls: ['./layer-switch-panel.component.css'],
 })
 export class LayerSwitchPanelComponent {
-  layerThemes: any[] = [];
+  layerThemes: LayerTheme[] = [];
+  hoveredTheme: LayerTheme | null = null;
 
-  constructor(public dialog: MatDialog) {} // injecting th3 metrials to the dialog
+  constructor(public dialog: MatDialog) {}
 
   openLayerDialog(): void {
-    const dialogRef = this.dialog.open(AddLayerDialogComponent); // this make references to the opendialog component (this.dialog is library with angular material )
+    const dialogRef = this.dialog.open(AddLayerDialogComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.layerThemes.push({ name: result, sublayers: [] }); // in the case sublayers are type of array
+        this.layerThemes.push({ name: result, sublayers: [] });
       }
     });
   }
 
+  openSublayerDialog(theme: LayerTheme): void {
+    this.hoveredTheme = theme;
+  }
+
   addSublayer(theme: LayerTheme): void {
-    // this very important concept , in the create it has created new layer type in the layer theme
     const dialogRef = this.dialog.open(AddSublayerDialogComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -45,7 +49,7 @@ export class LayerSwitchPanelComponent {
     this.layerThemes.splice(index, 1);
   }
 
-  deleteSublayer(theme: any, sublayer: any): void {
+  deleteSublayer(theme: LayerTheme, sublayer: any): void {
     const index = theme.sublayers.indexOf(sublayer);
     if (index !== -1) {
       theme.sublayers.splice(index, 1);

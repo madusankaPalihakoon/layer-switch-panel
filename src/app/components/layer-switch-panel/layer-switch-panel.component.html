@@ -1,44 +1,48 @@
-<div
-  class="flex w-4/5 mx-auto rounded-md bg-gray-300 h-fit flex-wrap items-start"
->
-  <div class="w-full h-fit">
-    <button
-      class="bg-blue-600 text-white px-4 py-2 rounded-md ml-2 mt-2"
-      (click)="openLayerDialog()"
-    >
-      Add Layer
-    </button>
-  </div>
-  <div class="w-full p-2 mt-0 h-fit">
-    <div
-      *ngFor="let theme of layerThemes"
-      class="w-full bg-gray-200 p-2 rounded-sm"
-    >
-      <div class="inline-flex h-fit items-center w-full my-1">
-        <h3 class="text-lg font-semibold text-gray-800 mr-2">
-          {{ theme.name }}
-        </h3>
-        <button
-          class="h-full"
-          mat-icon-button
-          aria-label="Delete"
-          (click)="deleteTheme(layerThemes.indexOf(theme))"
-        >
-          <mat-icon fontIcon="delete"></mat-icon>
-        </button>
-      </div>
+<div class="inline-flex w-full rounded-md bg-gray-300 h-fit items-center">
+  <button
+    class="bg-blue-600 text-white px-4 py-2 rounded-md my-2 ml-2"
+    (click)="openLayerDialog()"
+  >
+    Add Layer
+  </button>
+
+  <div
+    *ngFor="let theme of layerThemes"
+    class="ml-2 relative bg-gray-400 p-2 rounded-sm"
+  >
+    <div class="flex items-center h-full">
       <button
-        class="bg-blue-600 text-white px-4 py-2 rounded-md ml-2 mt-2"
+        class="bg-green-600 text-white px-4 py-2 rounded-md w-fit text-sm text-nowrap"
+        (click)="openSublayerDialog(theme)"
+      >
+        {{ theme.name }}
+      </button>
+      <button
+        mat-icon-button
+        aria-label="Delete"
+        (click)="deleteTheme(layerThemes.indexOf(theme))"
+      >
+        <mat-icon fontIcon="delete"></mat-icon>
+      </button>
+    </div>
+
+    <div
+      class="absolute top-full left-0 mt-1 bg-white border rounded shadow-md p-2 z-1"
+      *ngIf="theme === hoveredTheme"
+      (mouseleave)="hoveredTheme = null"
+    >
+      <button
+        class="bg-blue-600 text-white px-4 py-2 rounded-md ml-2 mt-2 text-sm text-nowrap"
         (click)="addSublayer(theme)"
       >
         Add Sublayers
       </button>
-      <div class="space-y-2">
+      <div class="flex flex-col text-nowrap h-full items-center">
         <div
           *ngFor="let sublayer of theme.sublayers"
-          class="text-sm text-gray-600 h-fit"
+          class="text-sm text-gray-600 h-fit mt-2"
         >
-          <p class="inline-flex h-fit items-center my-1">
+          <p class="inline-flex h-fit items-center">
             <input class="mr-2" type="radio" name="visibility" id="" />
             {{ sublayer.name }} ({{ sublayer.type }})
             <button
@@ -55,4 +59,5 @@
     </div>
   </div>
 </div>
-<app-map></app-map>
+
+<app-map class="z-0"></app-map>
